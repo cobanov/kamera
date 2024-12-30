@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kamera Stream</title>
+    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="stream">
+        <h2>Live Stream</h2>
+        <p><a href=https://localhost:4141/video_feed>localhost:4141/video_feed</a></p>
+        <img id="video-feed" src="/video_feed" alt="Webcam Stream" />
+      </div>
+      <div class="settings">
+        <h2>Settings</h2>
+        <form id="settings-form" action="/settings" method="post">
+          <label for="rotate">Rotate:</label>
+          <select id="rotate" name="rotate">
+            <option value="0">0°</option>
+            <option value="90">90°</option>
+            <option value="180">180°</option>
+            <option value="270">270°</option>
+          </select>
+
+          <label for="brightness">Brightness:</label>
+          <input
+            type="range"
+            id="brightness"
+            name="brightness"
+            min="0.1"
+            max="2.0"
+            step="0.1"
+            value="1.0"
+          />
+
+          <label for="grayscale">Grayscale:</label>
+          <input type="checkbox" id="grayscale" name="grayscale" />
+
+          <label for="mirror">Mirror:</label>
+          <input type="checkbox" id="mirror" name="mirror" />
+
+          <label for="filter_name">Filter:</label>
+          <select id="filter_name" name="filter_name">
+            <option value="none">None</option>
+            <option value="sepia">Sepia</option>
+            <option value="blur">Blur</option>
+            <option value="edges">Edges</option>
+          </select>
+
+          <div class="buttons">
+            <button type="submit">Apply Settings</button>
+            <button type="button" id="reset-button">Reset Settings</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const form = document.getElementById("settings-form");
+      const resetButton = document.getElementById("reset-button");
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const response = await fetch("/settings", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (response.ok) {
+          console.log("Settings updated successfully");
+        } else {
+          console.error("Failed to update settings");
+        }
+      });
+
+      resetButton.addEventListener("click", () => {
+        form.reset();
+      });
+    </script>
+  </body>
+</html>
