@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="kamera",
-    version="0.3.1",
+    version="0.4.0",
     author="Mert Cobanov",
     author_email="mertcobanov@gmail.com",
     description="A simple webcam streaming package",
