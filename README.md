@@ -14,7 +14,7 @@ And voilà! Your webcam is live and streaming at `http://localhost:4141`. No set
 
 ## Demo
 
-![dog](assets/example.png)
+![dog](https://github.com/cobanov/kamera/raw/main/assets/example.png)
 
 ## Features
 
