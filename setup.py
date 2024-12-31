@@ -2,11 +2,11 @@ from setuptools import find_packages, setup
 
 setup(
     name="kamera",
-    version="0.4.0",
+    version="0.4.2",
     author="Mert Cobanov",
     author_email="mertcobanov@gmail.com",
-    description="A simple webcam streaming package",
-    long_description=open("README.md").read(),
+    description="Effortless real-time webcam streaming and video processing",
+    long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/cobanov/kamera",
     packages=find_packages(),
